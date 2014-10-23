@@ -1,75 +1,103 @@
-// If no #unstick declared [X]
-// If only one sticky [X]
-// If multiple stickies
-// If multiple stick points?
-// Simultaneous stickies?
-// Animate?
-// offsets
-
 $.fn.stkr = function(options){
 
+	// var z = $(unstick).position();
 	var $sticky = $(this);
-	var unstick = document.getElementById('unstick');
 
+	// SET DEFAULTS AND ACCEPT OPTIONS
 	var settings = $.extend({
-		stickPosition: 'top-left',
+		startSticky: 'body',
+		endSticky: null,
+		stickyPosition: 'top-left',
 		top: null,
 		left: null,
 		bottom: null,
 		right: null,
 		offsetStick: 0,
-		offsetUnstick: 0
+		offsetUnstick: 0,
+		horizontal: false
 	}, options);
 
+	// CHECK POSITION SETTINGS
 	var checkSettings = function(){
-		if (settings.stickPosition=='top-left'){
-			return $sticky.addClass('fixed').css({
+		if (settings.stickyPosition=='top-left'){
+			return $sticky.css({
+				position: 'fixed',
 				top: 20, 
 				left: 20
 			});
-		}else if(settings.stickPosition=='top-right'){
-			return $sticky.addClass('fixed').css({
+		}else if(settings.stickyPosition=='top-right'){
+			return $sticky.css({
+				position: 'fixed',
 				top: 20, 
 				right: 20
 			});
-		}else if(settings.stickPosition=='bottom-right'){
-			return $sticky.addClass('fixed').css({
+		}else if(settings.stickyPosition=='bottom-right'){
+			return $sticky.css({
+				position: 'fixed',
 				bottom: 20, 
 				right: 20
 			});
 			
-		}else if (settings.stickPosition=='bottom-left'){
-			return $sticky.addClass('fixed').css({
+		}else if (settings.stickyPosition=='bottom-left'){
+			return $sticky.css({
+				position: 'fixed',
 				bottom: 20, 
 				left: 20
 			});
 		}else{
-			return $sticky.addClass('fixed').css({
+			return $sticky.css({
+				position: 'fixed',
 				top: settings.top,
 				left: settings.left,
 				bottom: settings.bottom,
 				right: settings.right
 			});
-		}
+		};
 	};
 
+	// WHEN USER SCROLLS....
 	$(document).scroll(function(){
-		var y = $(document).scrollTop();
-		var x = $('#sticky').position();
-		if (unstick==null){
-			if (y > (x.top+settings.offsetStick)) {
-				checkSettings();
+		var x = $(settings.startSticky).position();
+		// IF SETTINGS.HORIZONTAL == FALSE
+		if (!settings.horizontal){
+			var y = $(document).scrollTop();
+			// IF NO UNSTICK POINT IS DETERMINED
+			if (!settings.endSticky){
+				if (y > (x.top+settings.offsetStick)) {
+					checkSettings();
+				}else{
+					return $sticky.css({position:'initial'});
+				}
+			// IF AN UNSTICK POINT IS DETERMINED
 			}else{
-				return $sticky.removeClass('fixed');
+				var z = $(settings.endSticky).position();
+				if (y > (x.top-settings.offsetStick) && y < (z.top-settings.offsetUnstick)) {
+					checkSettings();
+				}else{
+					return $sticky.css({position:'initial'});
+				}
 			}
+		// IF SETTINGS.HORIZONTAL == TRUE
 		}else{
-			var z = $(unstick).position();
-			if (y > (x.top-settings.offsetStick) && y < (z.top-settings.offsetUnstick)) {
-				checkSettings();
+			var y = $(document).scrollLeft();
+			// IF NO UNSTICK POINT IS DETERMINED
+			if (!settings.endSticky){
+				if (y > (x.left+settings.offsetStick)) {
+					checkSettings();
+				}else{
+					return $sticky.css({position:'initial'});
+				}
+			// IF UNSTICK POINT IS DETERMINED
 			}else{
-				return $sticky.removeClass('fixed');
+				var z = $(settings.endSticky).position();
+				if (y > (x.left-settings.offsetStick) && y < (z.left-settings.offsetUnstick)) {
+					checkSettings();
+				}else{
+					return $sticky.css({position:'initial'});
+				}
 			}
 		}
+
 	});
 	
 };
