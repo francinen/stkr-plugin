@@ -1,0 +1,20 @@
+body {
+	margin: 0;
+}
+header {
+	background: red;
+	height: 600px;
+}
+
+section {
+	background: goldenrod;
+	height: 700px;
+}
+
+.bullshit {
+	padding: 20px;
+}
+
+.fixed {
+	position: fixed;
+}
