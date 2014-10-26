@@ -1,9 +1,7 @@
 $.fn.stkr = function(options){
-
-	// var z = $(unstick).position();
 	var $sticky = $(this);
+	var originalPosition = $(this).css('position');
 
-	// SET DEFAULTS AND ACCEPT OPTIONS
 	var settings = $.extend({
 		startSticky: 'body',
 		endSticky: null,
@@ -14,94 +12,197 @@ $.fn.stkr = function(options){
 		right: null,
 		offsetStick: 0,
 		offsetUnstick: 0,
-		horizontal: false
+		horizontal: false,
+		toggleVisibility: false,
+		toggleFade: false
 	}, options);
 
-	// CHECK POSITION SETTINGS
-	var checkSettings = function(){
+	var checkStickSettings = function(){
 		if (settings.stickyPosition=='top-left'){
-			return $sticky.css({
+			if (settings.toggleFade){
+				return $sticky.css({
 				position: 'fixed',
 				top: 20, 
 				left: 20,
-				visibility: 'visible'
-			});
+				opacity: 1
+				});
+			};
+			if (settings.toggleVisibility){
+				return $sticky.css({
+				position: 'fixed',
+				top: 20, 
+				left: 20,
+				visibility: 'visible',
+				});
+			};
+			if(!settings.toggleFade && !settings.toggleVisibility){
+				return $sticky.css({
+				position: 'fixed',
+				top: 20, 
+				left: 20
+				});
+			};
 		}else if(settings.stickyPosition=='top-right'){
-			return $sticky.css({
+			if (settings.toggleFade){
+				return $sticky.css({
 				position: 'fixed',
 				top: 20, 
 				right: 20,
-				visibility: 'visible'
-			});
+				opacity: 1
+				});
+			};
+			if (settings.toggleVisibility){
+				return $sticky.css({
+				position: 'fixed',
+				top: 20, 
+				right: 20,
+				visibility: 'visible',
+				});
+			};
+			if(!settings.toggleFade && !settings.toggleVisibility){
+				return $sticky.css({
+				position: 'fixed',
+				top: 20, 
+				right: 20
+				});
+			};
 		}else if(settings.stickyPosition=='bottom-right'){
-			return $sticky.css({
+			if (settings.toggleFade){
+				return $sticky.css({
 				position: 'fixed',
 				bottom: 20, 
 				right: 20,
-				visibility: 'visible'
-			});
-			
+				opacity: 1
+				});
+			};
+			if (settings.toggleVisibility){
+				return $sticky.css({
+				position: 'fixed',
+				bottom: 20, 
+				right: 20,
+				visibility: 'visible',
+				});
+			};
+			if(!settings.toggleFade && !settings.toggleVisibility){
+				return $sticky.css({
+				position: 'fixed',
+				bottom: 20, 
+				right: 20
+				});
+			};
 		}else if (settings.stickyPosition=='bottom-left'){
-			return $sticky.css({
+			if (settings.toggleFade){
+				return $sticky.css({
 				position: 'fixed',
 				bottom: 20, 
 				left: 20,
-				visibility: 'visible'
-			});
+				opacity: 1
+				});
+			};
+			if (settings.toggleVisibility){
+				return $sticky.css({
+				position: 'fixed',
+				bottom: 20, 
+				left: 20,
+				visibility: 'visible',
+				});
+			};
+			if(!settings.toggleFade && !settings.toggleVisibility){
+				return $sticky.css({
+				position: 'fixed',
+				bottom: 20, 
+				left: 20
+				});
+			};
 		}else{
-			return $sticky.css({
+			if (settings.toggleFade){
+				return $sticky.css({
+					position: 'fixed',
+					top: settings.top,
+					left: settings.left,
+					bottom: settings.bottom,
+					right: settings.right,
+					opacity: 1
+				});
+			};
+			if (settings.toggleVisibility){
+				return $sticky.css({
+					position: 'fixed',
+					top: settings.top,
+					left: settings.left,
+					bottom: settings.bottom,
+					right: settings.right,
+					visibility: 'visible'
+				});
+			};
+			if(!settings.toggleFade && !settings.toggleVisibility){
+				return $sticky.css({
 				position: 'fixed',
 				top: settings.top,
 				left: settings.left,
 				bottom: settings.bottom,
-				right: settings.right,
-				visibility: 'visible'
-			});
+				right: settings.right
+				});
+			}
 		};
 	};
 
-	// WHEN USER SCROLLS....
+	var checkUnstickSettings = function(){
+		if (settings.toggleFade){
+			if (!originalPosition){
+				return $sticky.css({position:'static', opacity: 0});
+			}else{
+				return $sticky.css({position: originalPosition, opacity: 0});
+			}
+		};
+		if (settings.toggleVisibility){
+			if (!originalPosition){
+				return $sticky.css({position:'static', visibility: 'hidden'});
+			}else{
+				return $sticky.css({position: originalPosition, visibility: 'hidden'});
+			}
+		};
+		if(!settings.toggleFade && !settings.toggleVisibility){
+			if (!originalPosition){
+				return $sticky.css({position:'static'});
+			}else{
+				return $sticky.css({position: originalPosition});
+			}						
+		}
+	};
+
 	$(document).scroll(function(){
 		var x = $(settings.startSticky).position();
-		// IF SETTINGS.HORIZONTAL == FALSE
 		if (!settings.horizontal){
 			var y = $(document).scrollTop();
-			// IF NO UNSTICK POINT IS DETERMINED
 			if (!settings.endSticky){
 				if (y > (x.top-settings.offsetStick)) {
-					checkSettings();
+					checkStickSettings();
 				}
-			// IF AN UNSTICK POINT IS DETERMINED
 			}else{
 				var z = $(settings.endSticky).position();
-				
 				if (y < (x.top-settings.offsetStick)){
-					return $sticky.css({position:'static'});
+					checkUnstickSettings();
 				}else if (y > (x.top-settings.offsetStick) && y < (z.top+settings.offsetUnstick)) {
-
-						checkSettings();
-
+						checkStickSettings();
 				}else{
-					return $sticky.css({position:'static', visibility: 'hidden'});
+					checkUnstickSettings();
 				}
 			}
-		// IF SETTINGS.HORIZONTAL == TRUE
 		}else{
 			var y = $(document).scrollLeft();
-			// IF NO UNSTICK POINT IS DETERMINED
 			if (!settings.endSticky){
 				if (y > (x.left-settings.offsetStick)) {
-					checkSettings();
+					checkStickSettings();
 				}else{
-					return $sticky.css({position:'static'});
+					checkUnstickSettings();
 				}
-			// IF UNSTICK POINT IS DETERMINED
 			}else{
 				var z = $(settings.endSticky).position();
 				if (y > (x.left-settings.offsetStick) && y < (z.left-settings.offsetUnstick)) {
-					checkSettings();
+					checkStickSettings();
 				}else{
-					return $sticky.css({position:'static', visibility: 'hidden'});
+					checkUnstickSettings();
 				}
 			}
 		}
