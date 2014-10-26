@@ -10,84 +10,96 @@
 	<div class="nav-wrapper">
 		<ul>
 			<li>
-				<a href="demo.html">View Demos</a>
+				<a href="documentation.html" class="active">Documentation</a>
 			</li>
 			<li>
-				<a href="https://github.com/francinen/stkr-plugin" target="_blank">Get/Fork it on GitHub</a>
+				<a href="demo.html">Demo</a>
 			</li>
 			<li>
-				<a href="documentation.html">Documentation</a>
-			</li>
-			
+				<a href="https://github.com/francinen/stkr-plugin" target="_blank" class="button">Download</a>
+			</li>	
 		</ul>
 	</div>
 </nav>
 <div class="wrapper">
 	<header>
 		<div class="inner-wrapper">
-			<h1>Stkr</h1>
-				</header>
+			<h1>Stkr: <span>Documentation</span></h1>
+		<ul>
+			<li><a href="#gettingStarted" class="button">Getting Started</a></li>
+			<li><a href="#default" class="button">Settings</a></li>
+			<li><a href="#contribute" class="button">Contribute</a></li>
+		</ul>
+	</header>
+
 		</div>
 	<section>
 	<img src="images/set-up.png" alt="" id="setUp">
 		<div class="inner-wrapper">
 		
-			<h2>Getting Started</h2>
+			<h2 id="gettingStarted">Getting Started</h2>
 			<ol class="getStarted">
 				<li>Download <em>stkr.zip</em> from GitHub</li>
-				<li>Transfer <em>stkr.js</em> from the plugin folder to your project folder</li>
-				<li>Link your html file to jQuery CDN and stkr.js by inserting these script tags immediately before your closing body tag:<pre><code><span class="script">&lt;script&nbsp;src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"&gt;&lt;/script&gt;</span><span class="script">&lt;script src="sticky.js"&gt;&lt;/script&gt;</span></code></pre>
+				<li>Transfer <em>stkr.min.js</em> from the plugin folder to your project folder</li>
+				<li>Load <em>jQuery CDN</em> and <em>stkr.min.js</em> by inserting the following script tags immediately before your closing body tag:<pre><code><span class="script highlight">&lt;script&nbsp;src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"&gt;&lt;/script&gt;</span><span class="script highlight">&lt;script src="sticky.js"&gt;&lt;/script&gt;</span></code></pre>
 				Make sure your src attribute includes the correct path to the stkr.js file.
 				</li>
 				<li>Give the desired sticky element an ID.
-				<pre><code><span class="html">&lt;img&nbsp;href="images/parachute.png" id="sticky"&gt;</span></code></pre>
-				If you're including multiple fixed elements that will become visible at different points on your web page, they should each have a distinct IDs. 
-				<pre><code><span class="html">&lt;img&nbsp;href="images/parachute.png"&nbsp;id="sticky1"&gt;</span><span class="html">&lt;img&nbsp;href="images/cloud.png"&nbsp;id="sticky2"&gt;</span><span class="html">&lt;img&nbsp;href="images/bird.png"&nbsp;id="sticky3"&gt;</span></code></pre>
+				<pre><code><span class="html highlight">&lt;img&nbsp;href="images/parachute.png" id="sticky"&gt;</span></code></pre>
+				If you're including multiple sticky elements that will become fixed at different points on the web page, they should each have a distinct ID name.
+				<pre><code><span class="html highlight">&lt;img&nbsp;href="images/parachute.png"&nbsp;id="sticky1"&gt;</span><span class="html highlight">&lt;img&nbsp;href="images/cloud.png"&nbsp;id="sticky2"&gt;</span><span class="html highlight">&lt;img&nbsp;href="images/bird.png"&nbsp;id="sticky3"&gt;</span></code></pre>
 				</li>
-				<li>Call the stkr method in your JavaScript file. If you're calling the method on multiple elements, call them individually.<pre><code><span class="jQuery">$('#sticky1').stkr();</span><span class="jQuery">$('#sticky2').stkr();</span><span class="jQuery">$('#sticky3').stkr();</span></code></pre>
-				<p>By default, the sticky element remains fixed on the top-left corner for the entire length of your web page, with its top and left properties set to 20px.</p>
-			<pre><code><span class="key-pair">position: fixed,</span><span class="key-pair">top: 20px,</span><span class="key-pair">left: 20px,</span></code></pre>
+				<li>Call the stkr method, <code class="inline">.stkr();</code>, in your JavaScript file. If there are multiple sticky elements on the page, invoke a new jQuery function for each.<pre><code><span class="jQuery highlight">$('#sticky1').stkr();</span><span class="jQuery highlight">$('#sticky2').stkr();</span><span class="jQuery highlight">$('#sticky3').stkr();</span></code></pre>
 				</li>
 			</ol>
+		</div>
+	</section>
+	<section>
+		<div class="inner-wrapper">
+			<h2 id="default">Default Settings</h2>
+			<p>By default, the sticky element remains fixed on the top-left corner for the entire length of your web page, with its top and left properties set to 20px.</p>
+			<pre><code><span class="highlight">position: 'fixed',</span><span class="highlight">top: 20,</span><span class="highlight">left: 20</span></code></pre>
 		</div>
 	</section>
 	<section class="settings">
 	<img src="images/customize.png" alt="" id="customize">
 		<div class="inner-wrapper">
-			<h2>Customizable Settings</h2>
+			<h2 id="customSettings">Customizable Settings</h2>
 			<ul class="settings-list">
 				<li>
 					<h3>Set custom start and end points</h3>
 					<ul>
-						<li><span class="setting">startSticky:</span> Identify the page element that marks the point at which the sticky element becomes fixed to the page. If this is not set, the sticky element will automatically have a fixed position at the top of your web page. <span class="value">Value: String. If using an ID as the selector, include the hashtag (#idName) in the string. If using a class name, include the dot (.className) in the string. </span>
+						<li><span class="setting">startSticky:</span> A <code class="inline">string</code> identifying the name, ID, or class of an HTML element. When the user scrolls to this point, the sticky element becomes fixed on the page.<span class="value">If using an ID as the selector, include the hashtag in the string (<code class="inline">'#idName'</code>). If using a class name, include the dot in the string (<code class="inline">'.className'</code>). </span>
 						</li>
 						
-						<li><span class="setting">endSticky:</span> Identify the element that marks the point at which the selector becomes fixed to the page. If this is not set, the element will remain fixed for the remaining length of the document. <span class="value">Value: String. If using an ID as the selector, include the hashtag (#idName) in the string. If using a class name, include the dot (.className) in the string.</span>
+						<li><span class="setting">endSticky:</span> A <code class="inline">string</code> identifying the name, ID, or class of an HTML element. This marks the end of the fixed element's designated "sticky zone". If not set, the element will remain fixed for the remaining length of the document.<span class="value">If using an ID as the selector, include the hashtag in the string (<code class="inline">'#idName'</code>). If using a class name, include the dot in the string (<code class="inline">'.className'</code>).</span>
 						</li>
 						
-						<li><span class="setting">offsetStick:</span> The sticky element becomes fixed a certain distance before or after its designated starting point. <span class="value">Value: Integer (Negative or Positive)</span></li>
+						<li><span class="setting">offsetStick:</span> An <code class="inline">integer</code> that offsets the point at which the element becomes fixed on the page</li>
 						
-						<li><span class="setting">offsetUnstick:</span> Offsets the designated end point by the given value. <span class="value">Value: Integer (Negative or Positive)</span></li>
+						<li><span class="setting">offsetUnstick:</span> An <code class="inline">integer</code> that offsets the point at which the element is no longer fixed on the page.</li>
 
-						<pre><code><span class="parent">&lt;section&gt;</span><span class="nested">&lt;img src="profile.jpg" id="sticky-profile"&gt;</span><span class="parent">&lt;/section&gt;</span><span class="parent">&lt;section id="about-me"&gt;</span><span class="nested">...</span><span class="parent">&lt;/section&gt;</span><span class="parent">&lt;section&gt;</span><span class="nested">...</span><span class="parent">&lt;/section&gt;</span><span class="parent">&lt;section id="portflio"&gt;</span><span class="nested">...</span><span class="parent">&lt;/section&gt;</span><span class="parent">&lt;footer&gt;</span><span class="nested">...</span><span class="parent">&lt;/footer&gt;</span><br><span class="script">&lt;script&gt;</span><span class="jQuery">$('#sticky-profile').stkr({</span><span class="property">startSticky: '#about-me',</span><span class="property">endSticky: '#portfolio',</span><span class="property">offsetStick: 500,</span><span class="property">offsetUnstick: 200</span><span class="jQuery">});</span><span class="script">&lt;/script&gt;</span></code></pre>
+						<pre><code><span class="parent">&lt;section&gt;</span><span class="nested highlight">&lt;img src="profile.jpg" id="sticky-profile"&gt;</span><span class="parent">&lt;/section&gt;</span><span class="parent highlight">&lt;section id="about-me"&gt;</span><span class="nested">...</span><span class="parent highlight">&lt;/section&gt;</span><span class="parent">&lt;section&gt;</span><span class="nested">...</span><span class="parent">&lt;/section&gt;</span><span class="parent highlight">&lt;section id="portflio"&gt;</span><span class="nested">...</span><span class="parent highlight">&lt;/section&gt;</span><span class="parent">&lt;footer&gt;</span><span class="nested">...</span><span class="parent">&lt;/footer&gt;</span><br><span class="script">&lt;script&gt;</span><span class="jQuery highlight">$('#sticky-profile').stkr({</span><span class="property highlight">startSticky: '#about-me',</span><span class="property highlight">endSticky: '#portfolio',</span><span class="property highlight">offsetStick: 500,</span><span class="property highlight">offsetUnstick: 200</span><span class="jQuery highlight">});</span><span class="script">&lt;/script&gt;</span></code></pre>
 					</ul>
 				</li>
 
 				<li>
 					<h3>Adjust position of fixed element</h3>
 					<ul>
-						<li><span class="setting">stickyPosition:</span> Determines where the fixed element is positioned on the page. <span class="value">Values: 'top-left', 'top-right', 'bottom-left', 'bottom-right', or 'custom'</span></li>
+						<li><span class="setting">stickyPosition:</span> A <code class="inline">string</code> that determines where the fixed element is positioned on the page.<span class="value">Accepted Values: <code class="inline">'top-left'</code>, <code class="inline">'top-right'</code>, <code class="inline">'bottom-left'</code>, <code class="inline">'bottom-right'</code>, or <code class="inline">'custom'</code></span></li>
 						
-						<li><span class="setting">top, right, bottom, left:</span> Control the element's horizontal or vertical offset from the edges of browser window. <span class="value">Value: Integer if using pixels (e.g., 30). String if using percentages (e.g., '30%').</span></li>
+						<li><span class="setting">top, right, bottom, left:</span> If <code class="inline">'stickyPosition'</code> is set to <code class="inline">'custom'</code>, adjust the element's <code class="inline">'top'</code>, <code class="inline">'right'</code>, <code class="inline">'bottom'</code>, and/or <code class="inline">'left'</code> properties to place it in the desired position. <span class="value">Accepted Values: <code class="inline">Integer</code> if using pixels (e.g., <code class="inline">30</code>) or <code class="inline">string</code> if using percentages (e.g., <code class="inline">'30%'</code>).</span></li>
 					</ul>
 
-					<pre><code><span class="jQuery">$('#sticky-profile').stkr({</span><span class="property">stickyPosition: 'custom',</span><span class="property">top: '50%',</span><span class="property">left: 40px</span><span class="jQuery">});</span></code></pre>
+					<pre><code><span class="jQuery">$('#sticky-profile').stkr({</span><span class="property highlight">stickyPosition: 'custom',</span><span class="property highlight">top: '50%',</span><span class="property highlight">left: 40</span><span class="jQuery">});</span></code></pre>
 				</li>
 
 				<li>
-					<h3>Change orientation</h3>
+					<h3>Extras</h3>
 					<ul>
-						<li><span class="setting">Horizontal:</span> Set to true if stkr method is triggered by a horizontal scroll. <span class="value">Value: Boolean (False by default)</span></li>
+						<li><span class="setting">toggleVisibility:</span> Set to <code class="inline">false</code> by default. Setting this to <code class="inline">true</code> will make the element disappear from the page when it is not between its designated start and end points. If changed to <code class="inline">true</code>, make sure to set the element's <code class="inline">visibility</code> to <code class="inline">hidden</code> in its CSS declaration so it is not visible on page load.<pre><code><span class="selector">#sticky {</span><span class="declaration highlight">visibility: hidden</span><span class="selector">}</span></code></pre></li>
+						<li><span class="setting">toggleFade:</span> Applies a fade in/fade out effect on the fixed element as it enters or leaves its designated sticky zone. Set to <code class="inline">false</code> by default. If changed to true, set the sticky element's <code class="inline">opacity</code> to <code class="inline">0</code> and include the <code class="inline">transition</code> property in its respective CSS declaration.<pre><code><span class="selector">#sticky {</span><span class="declaration highlight">opacity: 0;</span><span class="declaration highlight">-webkit-transition: opacity 0.2s;</span><span class="declaration highlight">transition: opacity 0.2s;</span><span class="selector">}</span></code></pre></li>
+						<li><span class="setting">Horizontal:</span> Set to <code class="inline">false</code> by default for vertical scrolling. Change to <code class="inline">true</code> if <code class="inline">.stkr()</code>  will be triggered by a horizontal scroll.</li>
 					</ul>
 				</li>		
 			</ul>
@@ -95,8 +107,7 @@
 	</section>
 	<section class="fork">
 		<div class="inner-wrapper">
-			<h2>Contribute</h2>
-			<p>Fork stkr on GitHub, and make it better!</p>
+			<h2 id="contribute">Contribute:</h2><a href="https://github.com/francinen/stkr-plugin" target="_blank" class="button">Fork on GitHub</a>
 		</div>
 	</section>
 	<footer>
@@ -105,9 +116,14 @@
 </div>	
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<script src="js/sticky.js"></script>
+<script src="js/jquery.smooth-scroll.min.js"></script>
+<script src="js/stkr.js"></script>
 <script>
 	$(function(){
+		$('a').smoothScroll({
+			offset: -100
+		});
+
 		$('nav').stkr({
 			stickyPosition: 'custom',
 			top: 0,

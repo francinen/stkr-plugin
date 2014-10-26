@@ -3,44 +3,35 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Stkr Demo</title>
+	<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="css/demo.css">
 </head>
 <body class="demo">
 <nav>
 	<ul>
 		<li>
-			<a href="demo.html">View Demos</a>
-		</li>
-		<li>
-			<a href="https://github.com/francinen/stkr-plugin" target="_blank">Get/Fork it on GitHub</a>
-		</li>
-		<li>
 			<a href="documentation.html">Documentation</a>
 		</li>
+		<li>
+			<a href="demo.html" class="active">Demo</a>
+		</li>
+		<li>
+			<a href="https://github.com/francinen/stkr-plugin" target="_blank" class="button">Download</a>
+		</li>
+		
 		
 	</ul>
 </nav>
 <img src="images/person.png" alt="" id="parachute">
-	<header>
-		<div class="header-wrapper">
-			<h1>Stkr</h1>
-			<p>Control when and where a fixed element appears on your page.</p>
-			<p>Scroll down to view demos.</p>
-			<ul>
-				<li>
-					<a href="https://github.com/francinen/stkr-plugin" id="GitHub" target="_blank">Get it on GitHub</a>
-				</li>
-				<li>
-					<a href="https://github.com/francinen/stkr-plugin" id="GitHub" target="_blank">Documentation</a>
-				</li>
-			</ul>
+	<header class="clearfix">
+		<div class="header-wrapper clearfix">
+			<i class="fa fa-hand-o-down fa-5x"></i><h1>Scroll down</h1> 
 		</div>
 	</header>
 	<section>
 		<div class="inner-wrapper">
 			<h2>Make it stick from top to bottom</h2>
-			
-		</div>6
+		</div>
 	</section>
 	<section id="sticky1">
 		<img src="images/person.png" alt="" id="setStart">
@@ -51,11 +42,11 @@
 		</div>
 	</section>
 	<section id="sticky2">
-		<img src="images/person.png" alt="" id="multiple">
+		<img src="images/person.png" alt="" id="fadeIn">
 	</section>
 	<section>
 		<div class="inner-wrapper">
-			<h2>Have multiple stickies</h2>
+			<h2>Apply Fade In/Out effects</h2>
 		</div>
 	</section>
 	<section id="unstick">
@@ -72,25 +63,39 @@
 	</footer>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<script src="js/sticky.js"></script>
+<script src="js/stkr.js"></script>
 <script>
 	$(function(){
 
+		$('nav').stkr({
+			startSticky: '#unstick',
+			endSticky: 'footer',
+			stickyPosition: 'custom',
+			top: 0,
+			left: 0
+		})
 
-		$('#parachute').stkr();
+		$('#parachute').stkr({
+			offsetUnstick: 200
+		});
 
 		$('#setStart').stkr({
 			startSticky: '#sticky1',
 			endSticky: '#unstick',
 			stickyPosition: 'top-right',
+			toggleVisibility: true
+
 		});
 
-		$('#multiple').stkr({
+		$('#fadeIn').stkr({
 			startSticky: '#sticky2',
 			endSticky: '#unstick',
+			offsetStick: -200,
+			offsetUnstick: -200,
 			stickyPosition: 'custom',
 			top: '40%',
-			left: '40%'
+			left: '40%',
+			toggleFade: true
 		});
 
 	});
