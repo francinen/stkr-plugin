@@ -1,0 +1,54 @@
+<h1 id="stkr">Stkr</h1>
+<h2 id="plugin-overview">Plugin Overview</h2>
+<p>An easy way to control when and where fixed elements appear on your web page.</p>
+<h3 id="view-demo-9654-">View Demo &#9654;</h3>
+<h2 id="getting-started">Getting Started</h2>
+<p>1. Download and open <strong>stkr-plugin.zip</strong>.</p>
+<p>2. Transfer <strong>stkr.min.js</strong> from the <strong>plugin_files</strong> folder to your project folder.</p>
+<p>3. Load the <strong>jQuery CDN</strong> and <strong>stkr.min.js</strong> into your HTML file using the <code>&lt;script&gt;</code> tag.</p>
+<p>4. Give the desired &quot;sticky&quot; element an <code>id</code>. If you&#39;re including multiple sticky elements that will become fixed at different points on the web page, they should each have a distinct ID name.</p>
+<pre><code>&lt;img href=&quot;images/parachute.png&quot; id=&quot;sticky1&quot;&gt;
+&lt;img href=&quot;images/cloud.png&quot; id=&quot;sticky2&quot;&gt;
+&lt;img href=&quot;images/bird.png&quot; id=&quot;sticky3&quot;&gt;
+</code></pre><p>5. Call the stkr method, <code>.stkr()</code>, in your JavaScript file. If there are multiple sticky elements on the page, invoke a new jQuery function for each.</p>
+<pre><code>$(&#39;#sticky1&#39;).stkr();
+$(&#39;#sticky2&#39;).stkr();
+$(&#39;#sticky3&#39;).stkr();
+</code></pre><h2 id="default-settings">Default Settings</h2>
+<p>By default, the sticky element remains fixed at the top-left corner for the entire length of your web page, with its <code>top</code> and <code>left</code> properties set to 20px.</p>
+<pre><code>position: fixed,
+top: 20px,
+left: 20px
+</code></pre><h2 id="customizable-settings">Customizable Settings</h2>
+<h3 id="set-custom-start-and-end-points">Set custom start and end points</h3>
+<p><strong>startSticky:</strong> A <code>string</code> identifying the name, ID, or class of an element. When the user scrolls to this point, the sticky element becomes fixed on the page. If using an ID as the selector, include the hashtag in the string (e.g., <code>&#39;#idName&#39;</code>). If using a class name, include the dot (e.g., <code>&#39;.className&#39;</code>) in the string. Default value: <code>&#39;body&#39;</code>.</p>
+<hr>
+<p><strong>endSticky:</strong> A <code>string</code> identifying the name, ID, or class of an element. This marks the end of the fixed element&#39;s designated &quot;sticky zone&quot;. If this is not set, the element will remain fixed for the remaining length of the document. If using an ID as the selector, include the hashtag in the string (e.g., <code>&#39;#idName&#39;</code>). If using a class name, include the dot (e.g., <code>&#39;.className&#39;</code>) in the string. Default value: <code>&#39;null&#39;</code>.</p>
+<hr>
+<p><strong>offsetStick:</strong> An <code>integer</code> that offsets the point at which the element becomes fixed on the page. </p>
+<p><strong>offsetUnstick:</strong> An <code>integer</code> that offsets the point at which the element is no longer fixed on the page.</p>
+<h3 id="adjust-position-of-fixed-element-s-">Adjust position of fixed element(s)</h3>
+<p><strong>stickyPosition:</strong> A <code>string</code> that determines where the fixed element is positioned on the page. Accepted values: <code>&#39;top-left</code>, <code>&#39;top-right</code>,<code>&#39;bottom-left</code>,<code>&#39;bottom-right</code>,<code>&#39;custom&#39;</code></p>
+<hr>
+<p><strong>top, right, bottom, left:</strong> If <code>stickyPosition</code> is set to <code>&#39;custom&#39;</code>, adjust the element&#39;s <code>top</code>, <code>right</code>, <code>bottom</code>, and/or <code>left</code> properties to place it in the desired position. Accepted values: <code>Integer</code> if using pixels (e.g., <code>30</code>) or <code>string</code> if using percentages (e.g., <code>&#39;30%&#39;</code>).</p>
+<pre><code>$(&#39;#sticky-profile&#39;).stkr({
+stickyPosition: &#39;custom&#39;,
+top: &#39;50%&#39;,
+left: 40
+});
+</code></pre><h3 id="extras">Extras</h3>
+<p><strong>toggleVisibility:</strong> Set to <code>false</code> by default. Setting this to <code>true</code> will make the element disappear from the page when it is not between its designated start and end points. If changed to <code>true</code>, make sure to set the element&#39;s <code>visibility</code> to <code>hidden</code> in its CSS declaration.</p>
+<pre><code>#sticky {
+visibility: hidden
+}
+</code></pre><hr>
+<p><strong>toggleFade:</strong> Applies a fade in/fade out effect on the fixed element as it enters or leaves its designated sticky zone. Set to <code>false</code> by default. If changed to <code>true</code>, set the element&#39;s <code>opacity</code> to <code>0</code> and include the <code>transition</code> property in its respective CSS declaration.</p>
+<pre><code>#sticky {
+opacity: 0;
+-webkit-transition: opacity 0.2s;
+transition: opacity 0.2s;
+}
+</code></pre><hr>
+<p><strong>horizontal:</strong> Set to <code>false</code> by default for vertical scrolling. Change to <code>true</code> if <code>.stkr()</code> will be triggered by a horizontal scroll.</p>
+<h2 id="contribute">Contribute</h2>
+<h3 id="fork-stkr-and-help-make-it-better-">Fork stkr and help make it better!</h3>
