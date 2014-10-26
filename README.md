@@ -4,7 +4,7 @@
 
 An easy way to control when and where fixed elements appear on your web page.
 
-### View Demo &#9654; 
+### [View Demo &#9654;](http://francinen.github.io/stkr-plugin/demo.html) 
 
 ## Getting Started
 1\. Download and open **stkr-plugin.zip**.
