@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>stkr: Documentation</title>
+	<link rel="stylesheet" href="css/demo.css">
+</head>
+<body class="documentation">
+<nav>
+	<div class="nav-wrapper">
+		<ul>
+			<li>
+				<a href="demo.html">View Demos</a>
+			</li>
+			<li>
+				<a href="https://github.com/francinen/stkr-plugin" target="_blank">Get/Fork it on GitHub</a>
+			</li>
+			<li>
+				<a href="documentation.html">Documentation</a>
+			</li>
+			
+		</ul>
+	</div>
+</nav>
+<div class="wrapper">
+	<header>
+		<div class="inner-wrapper">
+			<h1>Stkr</h1>
+				</header>
+		</div>
+	<section>
+	<img src="images/set-up.png" alt="" id="setUp">
+		<div class="inner-wrapper">
+		
+			<h2>Getting Started</h2>
+			<ol class="getStarted">
+				<li>Download <em>stkr.zip</em> from GitHub</li>
+				<li>Transfer <em>stkr.js</em> from the plugin folder to your project folder</li>
+				<li>Link your html file to jQuery CDN and stkr.js by inserting these script tags immediately before your closing body tag:<pre><code><span class="script">&lt;script&nbsp;src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"&gt;&lt;/script&gt;</span><span class="script">&lt;script src="sticky.js"&gt;&lt;/script&gt;</span></code></pre>
+				Make sure your src attribute includes the correct path to the stkr.js file.
+				</li>
+				<li>Give the desired sticky element an ID.
+				<pre><code><span class="html">&lt;img&nbsp;href="images/parachute.png" id="sticky"&gt;</span></code></pre>
+				If you're including multiple fixed elements that will become visible at different points on your web page, they should each have a distinct IDs. 
+				<pre><code><span class="html">&lt;img&nbsp;href="images/parachute.png"&nbsp;id="sticky1"&gt;</span><span class="html">&lt;img&nbsp;href="images/cloud.png"&nbsp;id="sticky2"&gt;</span><span class="html">&lt;img&nbsp;href="images/bird.png"&nbsp;id="sticky3"&gt;</span></code></pre>
+				</li>
+				<li>Call the stkr method in your JavaScript file. If you're calling the method on multiple elements, call them individually.<pre><code><span class="jQuery">$('#sticky1').stkr();</span><span class="jQuery">$('#sticky2').stkr();</span><span class="jQuery">$('#sticky3').stkr();</span></code></pre>
+				<p>By default, the sticky element remains fixed on the top-left corner for the entire length of your web page, with its top and left properties set to 20px.</p>
+			<pre><code><span class="key-pair">position: fixed,</span><span class="key-pair">top: 20px,</span><span class="key-pair">left: 20px,</span></code></pre>
+				</li>
+			</ol>
+		</div>
+	</section>
+	<section class="settings">
+	<img src="images/customize.png" alt="" id="customize">
+		<div class="inner-wrapper">
+			<h2>Customizable Settings</h2>
+			<ul class="settings-list">
+				<li>
+					<h3>Set custom start and end points</h3>
+					<ul>
+						<li><span class="setting">startSticky:</span> Identify the page element that marks the point at which the sticky element becomes fixed to the page. If this is not set, the sticky element will automatically have a fixed position at the top of your web page. <span class="value">Value: String. If using an ID as the selector, include the hashtag (#idName) in the string. If using a class name, include the dot (.className) in the string. </span>
+						</li>
+						
+						<li><span class="setting">endSticky:</span> Identify the element that marks the point at which the selector becomes fixed to the page. If this is not set, the element will remain fixed for the remaining length of the document. <span class="value">Value: String. If using an ID as the selector, include the hashtag (#idName) in the string. If using a class name, include the dot (.className) in the string.</span>
+						</li>
+						
+						<li><span class="setting">offsetStick:</span> The sticky element becomes fixed a certain distance before or after its designated starting point. <span class="value">Value: Integer (Negative or Positive)</span></li>
+						
+						<li><span class="setting">offsetUnstick:</span> Offsets the designated end point by the given value. <span class="value">Value: Integer (Negative or Positive)</span></li>
+
+						<pre><code><span class="parent">&lt;section&gt;</span><span class="nested">&lt;img src="profile.jpg" id="sticky-profile"&gt;</span><span class="parent">&lt;/section&gt;</span><span class="parent">&lt;section id="about-me"&gt;</span><span class="nested">...</span><span class="parent">&lt;/section&gt;</span><span class="parent">&lt;section&gt;</span><span class="nested">...</span><span class="parent">&lt;/section&gt;</span><span class="parent">&lt;section id="portflio"&gt;</span><span class="nested">...</span><span class="parent">&lt;/section&gt;</span><span class="parent">&lt;footer&gt;</span><span class="nested">...</span><span class="parent">&lt;/footer&gt;</span><br><span class="script">&lt;script&gt;</span><span class="jQuery">$('#sticky-profile').stkr({</span><span class="property">startSticky: '#about-me',</span><span class="property">endSticky: '#portfolio',</span><span class="property">offsetStick: 500,</span><span class="property">offsetUnstick: 200</span><span class="jQuery">});</span><span class="script">&lt;/script&gt;</span></code></pre>
+					</ul>
+				</li>
+
+				<li>
+					<h3>Adjust position of fixed element</h3>
+					<ul>
+						<li><span class="setting">stickyPosition:</span> Determines where the fixed element is positioned on the page. <span class="value">Values: 'top-left', 'top-right', 'bottom-left', 'bottom-right', or 'custom'</span></li>
+						
+						<li><span class="setting">top, right, bottom, left:</span> Control the element's horizontal or vertical offset from the edges of browser window. <span class="value">Value: Integer if using pixels (e.g., 30). String if using percentages (e.g., '30%').</span></li>
+					</ul>
+
+					<pre><code><span class="jQuery">$('#sticky-profile').stkr({</span><span class="property">stickyPosition: 'custom',</span><span class="property">top: '50%',</span><span class="property">left: 40px</span><span class="jQuery">});</span></code></pre>
+				</li>
+
+				<li>
+					<h3>Change orientation</h3>
+					<ul>
+						<li><span class="setting">Horizontal:</span> Set to true if stkr method is triggered by a horizontal scroll. <span class="value">Value: Boolean (False by default)</span></li>
+					</ul>
+				</li>		
+			</ul>
+		</div>
+	</section>
+	<section class="fork">
+		<div class="inner-wrapper">
+			<h2>Contribute</h2>
+			<p>Fork stkr on GitHub, and make it better!</p>
+		</div>
+	</section>
+	<footer>
+		
+	</footer>
+</div>	
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="js/sticky.js"></script>
+<script>
+	$(function(){
+		$('nav').stkr({
+			stickyPosition: 'custom',
+			top: 0,
+			left: 0
+		});
+
+		$('#setUp').stkr({
+			startSticky: 'ol.getStarted',
+			endSticky: 'section.settings',
+			offsetUnstick: -200,
+			stickyPosition: 'custom',
+			top: 50,
+			right: 30
+		});
+
+		$('#customize').stkr({
+			startSticky: '.settings',
+			endSticky: '.fork',
+			stickyPosition: 'custom',
+			top: 100,
+			left: 30
+		});
+
+	});
+
+</script>
+</body>
+</html>

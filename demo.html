@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Stkr Demo</title>
+	<link rel="stylesheet" href="css/demo.css">
+</head>
+<body class="demo">
+<nav>
+	<ul>
+		<li>
+			<a href="demo.html">View Demos</a>
+		</li>
+		<li>
+			<a href="https://github.com/francinen/stkr-plugin" target="_blank">Get/Fork it on GitHub</a>
+		</li>
+		<li>
+			<a href="documentation.html">Documentation</a>
+		</li>
+		
+	</ul>
+</nav>
+<img src="images/person.png" alt="" id="parachute">
+	<header>
+		<div class="header-wrapper">
+			<h1>Stkr</h1>
+			<p>Control when and where a fixed element appears on your page.</p>
+			<p>Scroll down to view demos.</p>
+			<ul>
+				<li>
+					<a href="https://github.com/francinen/stkr-plugin" id="GitHub" target="_blank">Get it on GitHub</a>
+				</li>
+				<li>
+					<a href="https://github.com/francinen/stkr-plugin" id="GitHub" target="_blank">Documentation</a>
+				</li>
+			</ul>
+		</div>
+	</header>
+	<section>
+		<div class="inner-wrapper">
+			<h2>Make it stick from top to bottom</h2>
+			
+		</div>6
+	</section>
+	<section id="sticky1">
+		<img src="images/person.png" alt="" id="setStart">
+	</section>
+	<section>
+		<div class="inner-wrapper">
+			<h2>Set custom start points</h2>
+		</div>
+	</section>
+	<section id="sticky2">
+		<img src="images/person.png" alt="" id="multiple">
+	</section>
+	<section>
+		<div class="inner-wrapper">
+			<h2>Have multiple stickies</h2>
+		</div>
+	</section>
+	<section id="unstick">
+		<div class="inner-wrapper">
+			<h2>Set custom "unstick" points</h2>
+		</div>
+	</section>
+
+	<section class="grass">
+
+	</section>
+	<footer>
+		
+	</footer>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="js/sticky.js"></script>
+<script>
+	$(function(){
+
+
+		$('#parachute').stkr();
+
+		$('#setStart').stkr({
+			startSticky: '#sticky1',
+			endSticky: '#unstick',
+			stickyPosition: 'top-right',
+		});
+
+		$('#multiple').stkr({
+			startSticky: '#sticky2',
+			endSticky: '#unstick',
+			stickyPosition: 'custom',
+			top: '40%',
+			left: '40%'
+		});
+
+	});
+
+</script>
+</body>
+</html>
