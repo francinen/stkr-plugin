@@ -16,6 +16,19 @@ $.fn.stkr = function(options){
 		toggleVisibility: false,
 		toggleFade: false
 	}, options);
+	
+	$(function(){
+		if (settings.toggleVisibility){
+			return $sticky.css({visibility: 'hidden'});
+		}else{
+			return $sticky;
+		}
+		if (settings.toggleFade){
+			return $sticky.css({opacity: 0});
+		}else{
+			return $sticky;
+		}
+	});
 
 	var checkStickSettings = function(){
 		if (settings.stickyPosition=='top-left'){
@@ -146,20 +159,20 @@ $.fn.stkr = function(options){
 			}
 		};
 	};
-
+	
 	var checkUnstickSettings = function(){
 		if (settings.toggleFade){
 			if (!originalPosition){
-				return $sticky.css({position:'static', opacity: 0});
+				return $sticky.css({opacity: 0, position:'static'});
 			}else{
-				return $sticky.css({position: originalPosition, opacity: 0});
+				return $sticky.css({opacity: 0, position: originalPosition});
 			}
 		};
 		if (settings.toggleVisibility){
 			if (!originalPosition){
-				return $sticky.css({position:'static', visibility: 'hidden'});
+				return $sticky.css({visibility: 'hidden', position:'static'});
 			}else{
-				return $sticky.css({position: originalPosition, visibility: 'hidden'});
+				return $sticky.css({visibility: 'hidden', position: originalPosition});
 			}
 		};
 		if(!settings.toggleFade && !settings.toggleVisibility){
