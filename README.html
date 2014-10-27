@@ -31,16 +31,31 @@ left: 20px
 <p><strong>stickyPosition:</strong> A <code>string</code> that determines where the fixed element is positioned on the page. Accepted values: <code>&#39;top-left</code>, <code>&#39;top-right</code>,<code>&#39;bottom-left</code>,<code>&#39;bottom-right</code>,<code>&#39;custom&#39;</code></p>
 <hr>
 <p><strong>top, right, bottom, left:</strong> If <code>stickyPosition</code> is set to <code>&#39;custom&#39;</code>, adjust the element&#39;s <code>top</code>, <code>right</code>, <code>bottom</code>, and/or <code>left</code> properties to place it in the desired position. Accepted values: <code>Integer</code> if using pixels (e.g., <code>30</code>) or <code>string</code> if using percentages (e.g., <code>&#39;30%&#39;</code>).</p>
+<<<<<<< HEAD
 <pre><code>$(&#39;#idName-1&#39;).stkr({
+=======
+<pre><code>$(&#39;#sticky-profile&#39;).stkr({
+>>>>>>> updated README.html
 stickyPosition: &#39;custom&#39;,
 top: &#39;50%&#39;,
 left: 40
 });
 </code></pre><h3 id="extras">Extras</h3>
+<<<<<<< HEAD
 <p><strong>toggleVisibility:</strong> Set to <code>false</code> by default. Setting this to <code>true</code> will make the element disappear from the page when it is not between its designated start and end points.</p>
 <hr>
 <p><strong>toggleFade:</strong> Applies a fade in/fade out effect on the fixed element as it enters or leaves its designated sticky zone. Set to <code>false</code> by default. If changed to true, you can use CSS <code>transition</code> to adjust the duration of the effect.</p>
 <pre><code>#sticky {
+=======
+<p><strong>toggleVisibility:</strong> Set to <code>false</code> by default. Setting this to <code>true</code> will make the element disappear from the page when it is not between its designated start and end points. If changed to <code>true</code>, make sure to set the element&#39;s <code>visibility</code> to <code>hidden</code> in its CSS declaration.</p>
+<pre><code>#sticky {
+visibility: hidden
+}
+</code></pre><hr>
+<p><strong>toggleFade:</strong> Applies a fade in/fade out effect on the fixed element as it enters or leaves its designated sticky zone. Set to <code>false</code> by default. If changed to <code>true</code>, set the element&#39;s <code>opacity</code> to <code>0</code> and include the <code>transition</code> property in its respective CSS declaration.</p>
+<pre><code>#sticky {
+opacity: 0;
+>>>>>>> updated README.html
 -webkit-transition: opacity 0.2s;
 transition: opacity 0.2s;
 }
