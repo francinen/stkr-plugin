@@ -16,17 +16,17 @@ An easy way to control when and where fixed elements appear on your web page.
 4\. Give the desired "sticky" element an `id`. If you're including multiple sticky elements that will become fixed at different points on the web page, they should each have a distinct ID name.
 
 ```
-<img href="images/parachute.png" id="sticky1">
-<img href="images/cloud.png" id="sticky2">
-<img href="images/bird.png" id="sticky3">
+<img href="images/parachute.png" id="idName-1">
+<img href="images/cloud.png" id="idName-2">
+<img href="images/bird.png" id="idName-3">
 ``` 
 
 5\. Call the stkr method, `.stkr()`, in your JavaScript file. If there are multiple sticky elements on the page, invoke a new jQuery function for each.
 
 ```
-$('#sticky1').stkr();
-$('#sticky2').stkr();
-$('#sticky3').stkr();
+$('#idName-1').stkr();
+$('#idName-2').stkr();
+$('#idName-3').stkr();
 ```
 
 ## Default Settings
@@ -55,7 +55,7 @@ left: 20px
 **top, right, bottom, left:** If `stickyPosition` is set to `'custom'`, adjust the element's `top`, `right`, `bottom`, and/or `left` properties to place it in the desired position. Accepted values: `Integer` if using pixels (e.g., `30`) or `string` if using percentages (e.g., `'30%'`).
 
 ```
-$('#sticky-profile').stkr({
+$('#idName-1').stkr({
 stickyPosition: 'custom',
 top: '50%',
 left: 40
@@ -66,17 +66,11 @@ left: 40
 
 **toggleVisibility:** Set to `false` by default. Setting this to `true` will make the element disappear from the page when it is not between its designated start and end points. If changed to `true`, make sure to set the element's `visibility` to `hidden` in its CSS declaration.
 
-```
-#sticky {
-visibility: hidden
-}
-```
 ***
 **toggleFade:** Applies a fade in/fade out effect on the fixed element as it enters or leaves its designated sticky zone. Set to `false` by default. If changed to `true`, set the element's `opacity` to `0` and include the `transition` property in its respective CSS declaration.
 
 ```
 #sticky {
-opacity: 0;
 -webkit-transition: opacity 0.2s;
 transition: opacity 0.2s;
 }
