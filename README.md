@@ -4,7 +4,7 @@
 
 An easy way to control when and where fixed elements appear on your web page.
 
-### [View Demo &#9654;] (http://francinen.github.io/stkr-plugin/demo.html) 
+### [View Demo &#9654;](http://francinen.github.io/stkr-plugin/demo.html) 
 
 ## Getting Started
 1\. Download and open **stkr-plugin.zip**.
@@ -86,4 +86,8 @@ transition: opacity 0.2s;
 **horizontal:** Set to `false` by default for vertical scrolling. Change to `true` if `.stkr()` will be triggered by a horizontal scroll.
 
 ## Contribute
+<<<<<<< HEAD
 ### Fork stkr and help make it better!
+=======
+### Fork stkr and help make it better!
+>>>>>>> ecfa754ed413d96d46dd2b540eab17ad138c6527
