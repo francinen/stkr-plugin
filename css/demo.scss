@@ -341,7 +341,6 @@ pre {
 	top: 0px;
 	right: 10px;
 	width: 420px;
-	visibility: hidden;
 }
 
 #fadeIn {
@@ -349,7 +348,6 @@ pre {
 	top: 40%;
 	left: 40%;
 	width: 200px;
-	opacity: 0;
 	-webkit-transition: opacity 1s;
 	transition: opacity 1s;
 }
