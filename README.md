@@ -80,8 +80,4 @@ transition: opacity 0.2s;
 **horizontal:** Set to `false` by default for vertical scrolling. Change to `true` if `.stkr()` will be triggered by a horizontal scroll.
 
 ## Contribute
-<<<<<<< HEAD
 ### Fork stkr and help make it better!
-=======
-### Fork stkr and help make it better!
->>>>>>> ecfa754ed413d96d46dd2b540eab17ad138c6527
