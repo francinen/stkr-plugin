@@ -47,9 +47,9 @@
 				<li>Give the desired sticky element an ID.
 				<pre><code><span class="html highlight">&lt;img&nbsp;href="images/parachute.png" id="sticky"&gt;</span></code></pre>
 				If you're including multiple sticky elements that will become fixed at different points on the web page, they should each have a distinct ID name.
-				<pre><code><span class="html highlight">&lt;img&nbsp;href="images/parachute.png"&nbsp;id="sticky1"&gt;</span><span class="html highlight">&lt;img&nbsp;href="images/cloud.png"&nbsp;id="sticky2"&gt;</span><span class="html highlight">&lt;img&nbsp;href="images/bird.png"&nbsp;id="sticky3"&gt;</span></code></pre>
+				<pre><code><span class="html highlight">&lt;img&nbsp;href="images/parachute.png"&nbsp;id="idName-1"&gt;</span><span class="html highlight">&lt;img&nbsp;href="images/cloud.png"&nbsp;id="idName-2"&gt;</span><span class="html highlight">&lt;img&nbsp;href="images/bird.png"&nbsp;id="idName-3"&gt;</span></code></pre>
 				</li>
-				<li>Call the stkr method, <code class="inline">.stkr();</code>, in your JavaScript file. If there are multiple sticky elements on the page, invoke a new jQuery function for each.<pre><code><span class="jQuery highlight">$('#sticky1').stkr();</span><span class="jQuery highlight">$('#sticky2').stkr();</span><span class="jQuery highlight">$('#sticky3').stkr();</span></code></pre>
+				<li>Call the stkr method, <code class="inline">.stkr();</code>, in your JavaScript file. If there are multiple sticky elements on the page, invoke a new jQuery function for each.<pre><code><span class="jQuery highlight">$('#idName-1').stkr();</span><span class="jQuery highlight">$('#idName-2').stkr();</span><span class="jQuery highlight">$('#idName-3').stkr();</span></code></pre>
 				</li>
 			</ol>
 		</div>
@@ -97,8 +97,8 @@
 				<li>
 					<h3>Extras</h3>
 					<ul>
-						<li><span class="setting">toggleVisibility:</span> Set to <code class="inline">false</code> by default. Setting this to <code class="inline">true</code> will make the element disappear from the page when it is not between its designated start and end points. If changed to <code class="inline">true</code>, make sure to set the element's <code class="inline">visibility</code> to <code class="inline">hidden</code> in its CSS declaration so it is not visible on page load.<pre><code><span class="selector">#sticky {</span><span class="declaration highlight">visibility: hidden</span><span class="selector">}</span></code></pre></li>
-						<li><span class="setting">toggleFade:</span> Applies a fade in/fade out effect on the fixed element as it enters or leaves its designated sticky zone. Set to <code class="inline">false</code> by default. If changed to true, set the sticky element's <code class="inline">opacity</code> to <code class="inline">0</code> and include the <code class="inline">transition</code> property in its respective CSS declaration.<pre><code><span class="selector">#sticky {</span><span class="declaration highlight">opacity: 0;</span><span class="declaration highlight">-webkit-transition: opacity 0.2s;</span><span class="declaration highlight">transition: opacity 0.2s;</span><span class="selector">}</span></code></pre></li>
+						<li><span class="setting">toggleVisibility:</span> Set to <code class="inline">false</code> by default. Setting this to <code class="inline">true</code> will make the element disappear from the page when it is not between its designated start and end points.</li>
+						<li><span class="setting">toggleFade:</span> Applies a fade in/fade out effect on the fixed element as it enters or leaves its designated sticky zone. Set to <code class="inline">false</code> by default. If changed to true, you can use CSS <code class="inline">transition</code> to adjust the duration of the effect.<pre><code><span class="selector">#sticky {</span><span class="declaration highlight">-webkit-transition: opacity 0.2s;</span><span class="declaration highlight">transition: opacity 0.2s;</span><span class="selector">}</span></code></pre></li>
 						<li><span class="setting">Horizontal:</span> Set to <code class="inline">false</code> by default for vertical scrolling. Change to <code class="inline">true</code> if <code class="inline">.stkr()</code>  will be triggered by a horizontal scroll.</li>
 					</ul>
 				</li>		
