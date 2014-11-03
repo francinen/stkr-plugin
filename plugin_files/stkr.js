@@ -18,6 +18,9 @@ $.fn.stkr = function(options){
 	}, options);
 	
 	$(function(){
+		if (settings.toggleFade && settings.toggleVisibility){
+			return $sticky.css({visibility:'hidden', opacity:0})
+		}
 		if (settings.toggleVisibility){
 			return $sticky.css({visibility: 'hidden'});
 		}else{
@@ -32,6 +35,15 @@ $.fn.stkr = function(options){
 
 	var checkStickSettings = function(){
 		if (settings.stickyPosition=='top-left'){
+			if (settings.toggleFade && settings.toggleVisibility){
+				return $sticky.css({
+					position: 'fixed',
+					top: 20, 
+					left: 20,
+					opacity: 1,
+					visibility: 'visible'
+				});
+			}
 			if (settings.toggleFade){
 				return $sticky.css({
 				position: 'fixed',
@@ -56,6 +68,15 @@ $.fn.stkr = function(options){
 				});
 			};
 		}else if(settings.stickyPosition=='top-right'){
+			if (settings.toggleFade && settings.toggleVisibility){
+				return $sticky.css({
+					position: 'fixed',
+					top: 20, 
+					right: 20,
+					opacity: 1,
+					visibility: 'visible'
+				});
+			}
 			if (settings.toggleFade){
 				return $sticky.css({
 				position: 'fixed',
@@ -80,6 +101,15 @@ $.fn.stkr = function(options){
 				});
 			};
 		}else if(settings.stickyPosition=='bottom-right'){
+			if (settings.toggleFade && settings.toggleVisibility){
+				return $sticky.css({
+					position: 'fixed',
+					bottom: 20, 
+					right: 20,
+					opacity: 1,
+					visibility: 'visible'
+				});
+			}
 			if (settings.toggleFade){
 				return $sticky.css({
 				position: 'fixed',
@@ -104,6 +134,15 @@ $.fn.stkr = function(options){
 				});
 			};
 		}else if (settings.stickyPosition=='bottom-left'){
+			if (settings.toggleFade && settings.toggleVisibility){
+				return $sticky.css({
+					position: 'fixed',
+					bottom: 20, 
+					left: 20,
+					opacity: 1,
+					visibility: 'visible'
+				});
+			}
 			if (settings.toggleFade){
 				return $sticky.css({
 				position: 'fixed',
@@ -128,6 +167,17 @@ $.fn.stkr = function(options){
 				});
 			};
 		}else{
+			if (settings.toggleFade && settings.toggleVisibility){
+				return $sticky.css({
+					position: 'fixed',
+					top: settings.top,
+					left: settings.left,
+					bottom: settings.bottom,
+					right: settings.right,
+					opacity: 1,
+					visibility: 'visible'
+				});
+			}
 			if (settings.toggleFade){
 				return $sticky.css({
 					position: 'fixed',
