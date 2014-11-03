@@ -57,7 +57,7 @@ $.fn.stkr = function(options){
 				position: 'fixed',
 				top: 20, 
 				left: 20,
-				visibility: 'visible',
+				visibility: 'visible'
 				});
 			};
 			if(!settings.toggleFade && !settings.toggleVisibility){
@@ -241,10 +241,12 @@ $.fn.stkr = function(options){
 			if (!settings.endSticky){
 				if (y > (x.top-settings.offsetStick)) {
 					checkStickSettings();
+				}else if (y < (x.top-settings.offsetStick)){
+					checkUnstickSettings();
 				}
 			}else{
 				var z = $(settings.endSticky).position();
-				if (y < (x.top-settings.offsetStick)){
+				if (y < (x.top-settings.offsetStick)|| y > (z.top)){
 					checkUnstickSettings();
 				}else if (y > (x.top-settings.offsetStick) && y < (z.top+settings.offsetUnstick)) {
 						checkStickSettings();
