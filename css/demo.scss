@@ -14,7 +14,7 @@ input[type=reset],input[type=submit]{-webkit-appearance:button;cursor:pointer;}b
  }
 
 $font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-$font-size: 20px;
+$font-size: 14px;
 $grass-green: #92ba25;
 $button-color: #00c7ff;
 
@@ -68,7 +68,7 @@ nav {
 	li {
 		list-style-type: none;
 		display: inline-block;
-		font-size: $font-size*0.8;
+		font-size: $font-size*1.1;
 		margin-right: 20px;
 		&:last-child {
 			margin-right: 0;
@@ -189,7 +189,7 @@ body.documentation {
 	}
 	
 	ol li {
-		margin-bottom: 40px;
+		margin-bottom: 15px;
 	}
 	ul.settings-list > li > ul > li {
 		margin: 16px 0;

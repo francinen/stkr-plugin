@@ -1,2 +1,5 @@
 *.DS_Store
 plugin_files/min/
+node_modules/
+.sass-cache/
+npm-debug.log
